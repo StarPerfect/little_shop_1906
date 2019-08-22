@@ -14,6 +14,6 @@ class Cart
   end
 
   def count_of(id)
-  @contents[id.to_s].to_i
+    @contents[id.to_s].to_i
   end
 end

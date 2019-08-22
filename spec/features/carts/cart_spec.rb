@@ -57,10 +57,7 @@ RSpec.describe "When a user adds items to their cart" do
 
     visit "/items/#{@brush.id}"
     click_button "Add Item"
+
     expect(page).to have_content("Cart: 3")
   end
 end
-
-    # within "#cart-indicator" do
-    #   expect(page).to have_content(1)
-    # end
