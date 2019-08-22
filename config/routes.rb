@@ -23,5 +23,6 @@ Rails.application.routes.draw do
   get '/reviews/:review_id/edit', to: 'reviews#edit'
   patch '/reviews/:review_id', to: 'reviews#update'
 
+  get '/cart', to: 'carts#show'
   patch "/cart/:item_id", to: "carts#add_item"
 end

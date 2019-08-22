@@ -4,6 +4,10 @@ class CartsController < ApplicationController
   def create
   end
 
+  def show
+    
+  end
+
   def add_item
     item = Item.find(params[:item_id])
     item_id_str = item.id.to_s
