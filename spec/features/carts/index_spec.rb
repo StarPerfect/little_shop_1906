@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-require 'rails_helper'
-
 # As a visitor
 # When I have added items to my cart
 # And I visit my cart ("/cart")
@@ -42,21 +40,27 @@ RSpec.describe "Cart Index Page" do
 
       visit '/cart'
 
-      expect(page).to have_content(@pull_toy.name)
-      expect(page).to have_content("img[src*='#{@pull_toy.image}']")
-      expect(page).to have_content(@pull_toy.merchant)
-      expect(page).to have_content(@pull_toy.price)
-      expect(page).to have_content("Quantity: 1")
-      expect(page).to have_content("Subtotal:$ 10.00")
+      within "cart-item-#{@pull_toy.id}" do
+        expect(page).to have_content(@pull_toy.name)
+        expect(page).to have_content("img[src*='#{@pull_toy.image}']")
+        expect(page).to have_content(@pull_toy.merchant)
+        expect(page).to have_content(@pull_toy.price)
+        expect(page).to have_content("Quantity: 1")
+        expect(page).to have_content("Subtotal: $10.00")
+      end
 
-      expect(page).to have_content(@tire.name)
-      expect(page).to have_content("img[src*='#{@tire.image}']")
-      expect(page).to have_content(@tire.merchant)
-      expect(page).to have_content(@tire.price)
-      expect(page).to have_content("Quantity: 2")
-      expect(page).to have_content("Subtotal: $200.00")
+      within "cart-item-#{@tire.id}" do
+        expect(page).to have_content(@tire.name)
+        expect(page).to have_content("img[src*='#{@tire.image}']")
+        expect(page).to have_content(@tire.merchant)
+        expect(page).to have_content(@tire.price)
+        expect(page).to have_content("Quantity: 2")
+        expect(page).to have_content("Subtotal: $200.00")
+      end
 
-      expect(page).to have_content("Total: $210.00")
+      within "cart-summary" do
+        expect(page).to have_content("Total: $210.00")
+      end
     end
   end
 end
