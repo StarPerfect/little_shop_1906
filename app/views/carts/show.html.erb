@@ -1,12 +1,14 @@
 <h1> My Cart </h1>
 <section id="cart-summary">
     <%= cart.contents.each do |item_id, quantity|%>
-    <section id= "cart-item-#{item_id}">
+      <section id= "cart-item-<%=item_id%>">
         <%= item = Item.find(item_id) %>
-    <p><%= item.name %></p>
-    <p><%= "FIND KEY THAT MATCHES ITEM ID: IMG" %></p>
-    <p><%= "FIND KEY THAT MATCHES ITEM ID: " %></p>
-    <p><%= "FIND KEY THAT MATCHES ITEM ID" %></p>
-    </section>
+        <p><%= item.name %></p>
+        <img src= <%= item.image %>>
+        <p><%= item.merchant.name %></p>
+        <p><%= item.price %></p>
+        <p>Quantity: <%= quantity %></p>
+        <p>Subtotal: $<%= quantity * item.price%></p>
+      </section>
     <% end %>
   </section>

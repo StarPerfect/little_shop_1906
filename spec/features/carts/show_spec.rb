@@ -40,26 +40,26 @@ RSpec.describe "Cart Index Page" do
 
       visit '/cart'
 
-      within "cart-item-#{@pull_toy.id}" do
+      within "#cart-item-#{@pull_toy.id}" do
         expect(page).to have_content(@pull_toy.name)
-        expect(page).to have_content("img[src*='#{@pull_toy.image}']")
-        expect(page).to have_content(@pull_toy.merchant)
+        expect(page).to have_css("img[src*='#{@pull_toy.image}']")
+        expect(page).to have_content(@pull_toy.merchant.name)
         expect(page).to have_content(@pull_toy.price)
         expect(page).to have_content("Quantity: 1")
-        expect(page).to have_content("Subtotal: $10.00")
+        expect(page).to have_content("Subtotal: $10")
       end
 
-      within "cart-item-#{@tire.id}" do
+      within "#cart-item-#{@tire.id}" do
         expect(page).to have_content(@tire.name)
-        expect(page).to have_content("img[src*='#{@tire.image}']")
-        expect(page).to have_content(@tire.merchant)
+        expect(page).to have_css("img[src*='#{@tire.image}']")
+        expect(page).to have_content(@tire.merchant.name)
         expect(page).to have_content(@tire.price)
         expect(page).to have_content("Quantity: 2")
-        expect(page).to have_content("Subtotal: $200.00")
+        expect(page).to have_content("Subtotal: $200")
       end
 
-      within "cart-summary" do
-        expect(page).to have_content("Total: $210.00")
+      within "#cart-summary" do
+        expect(page).to have_content("Total: $210")
       end
     end
   end

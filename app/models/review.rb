@@ -16,4 +16,5 @@ class Review < ApplicationRecord
   def self.bottom_three_reviews
     order(rating: :asc).first(3)
   end
+
 end
