@@ -1,9 +1,9 @@
 <h1> My Cart </h1>
 <section id="cart-summary">
-  <% cart.contents.each do |id, quantity| %>
-    <section id= "cart-item">
-      <%= item = Item.find(params[id]) %>
-    <p><%= "FIND KEY THAT MATCHES ITEM ID: NAME" %></p>
+    <%= cart.contents.each do |item_id, quantity|%>
+    <section id= "cart-item-#{item_id}">
+        <%= item = Item.find(item_id) %>
+    <p><%= item.name %></p>
     <p><%= "FIND KEY THAT MATCHES ITEM ID: IMG" %></p>
     <p><%= "FIND KEY THAT MATCHES ITEM ID: " %></p>
     <p><%= "FIND KEY THAT MATCHES ITEM ID" %></p>
