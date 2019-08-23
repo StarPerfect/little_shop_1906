@@ -11,4 +11,10 @@
         <p>Subtotal: $<%= quantity * item.price%></p>
       </section>
     <% end %>
+
+    <section id="cart-total">
+      <p> Total: $<%= cart.contents.sum do |item_id, quantity|%></p>
+      <%=  (Item.find(item_id)).price * quantity.to_f %>
+      <% end %>
+    </section>
   </section>
