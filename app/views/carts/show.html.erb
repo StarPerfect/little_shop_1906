@@ -2,16 +2,21 @@
 <section id="cart-summary">
     <%= cart.contents.each do |item_id, quantity|%>
       <section id= "cart-item-<%=item_id%>">
-        <%= item = Item.find(item_id) %>
+        <section hidden><%= item = Item.find(item_id) %></section>
         <p><%= item.name %></p>
         <img src= <%= item.image %>>
         <p><%= item.merchant.name %></p>
         <p><%= item.price %></p>
         <p>Quantity: <%= quantity %></p>
+
+        <!-- Move calc to model method? -->
         <p>Subtotal: $<%= quantity * item.price%></p>
       </section>
     <% end %>
+    <!-- need to figure out why @contents hash is displaying in between these sections -->
 
+
+    <!-- need testing for cart_total in model method -->
     <section id="cart-total">
       <p> Total: $<%= cart.cart_total %></p>
     </section>
