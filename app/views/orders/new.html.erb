@@ -6,10 +6,9 @@
   <% cart.item_quantity.each do |item, quantity| %>
     <section id="item-checkout-<%= item.id%>">
       <center>
-      <p><b><%= link_to item.name, "/items/#{item.id}" %></b></p>
-      <p><%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
-      <p><%= image_tag item.image, alt: item.description %></p>
-      <p>Price: $<%= item.price %></p>
+
+        <%= render partial:"partials/item_info", locals:{item:item} %>
+
       <p>Quantity: <%= quantity %> </p>
       <p>Subtotal: $<%= item.item_subtotal(quantity) %></p>
       </center>
@@ -23,7 +22,7 @@
 
 <center>
   <h3>Shipping Information</h3>
-  <%= form_tag '/orders', method: :post do |f| %>
+  <%= form_tag '/orders', method: :post do %>
     <%= text_field_tag :name, nil, placeholder: 'Name' %>
 
     <%= text_field_tag :address, nil, placeholder: 'Address' %>

@@ -1,0 +1,4 @@
+<p><b><%= link_to item.name, "/items/#{item.id}" %></b></p>
+<p><%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
+<p><%= image_tag item.image, alt: item.description %></p>
+<p>Price: $<%= item.price %></p>

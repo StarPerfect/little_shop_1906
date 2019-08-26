@@ -3,11 +3,11 @@
 <section id = "cart-summary">
   <% cart.item_quantity.each do |item, quantity| %>
     <section id="cart-item-<%=item.id%>">
-      <p><%= link_to item.name, "/items/#{item.id}" %></p>
-      <p><%= link_to item.merchant.name, "/merchants/#{item.merchant.id}" %></p>
+
+
+      <%= render partial:"partials/item_info", locals:{item:item} %>
+
       <p><div id="delete-button" style="width:200px;"><%= button_to 'Delete Item', "/cart/#{item.id}", method: :delete_item %></div>
-      <p><%= image_tag item.image, alt: item.description %></p>
-      <p>$<%= item.price %></p>
       <p>Quantity: <%= link_to '+', "/cart/#{item.id}/increase", method: :post%> <%= quantity %> <%= link_to "-", "/cart/#{item.id}/decrease", method: :post %> </p>
       <p>Subtotal: $<%= item.item_subtotal(quantity) %></p>
     </section>
