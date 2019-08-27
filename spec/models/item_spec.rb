@@ -13,6 +13,8 @@ describe Item, type: :model do
   describe "relationships" do
     it {should belong_to :merchant}
     it {should have_many :reviews}
+    it {should have_many :item_orders}
+    it {should have_many(:orders).through(:item_orders)}
   end
 
   describe "#item_subtotal" do
