@@ -87,3 +87,35 @@ RSpec.describe "When a user goes to the order create page" do
     expect(page).to have_button("Create Order")
   end
 end
+
+# As a visitor
+# When I fill out all information on the new order page
+# And click on 'Create Order'
+# An order is created and saved in the database
+# And I am redirected to that order's show page with the following information:
+# - My name and address (shipping information)
+# - Details of the order:
+# - the name of the item
+# - the merchant I'm buying this item from
+# - the price of the item
+# - my desired quantity of the item
+# - a subtotal (price multiplied by quantity)
+# - a grand total of what everything in my cart will cost
+# - the date when the order was created
+RSpec.describe 'When I users completes the shipping form' do
+  it 'clicks Create Order button and a new order is saved in the db' do
+    visit '/orders/new'
+
+    fill_in :name, with: 'Susie Homemaker'
+    fill_in :address, with: '789 Beaver Lane'
+    fill_in :city, with: 'Stepford'
+    fill_in :state, with: 'CT'
+    fill_in :zip, with: '06075'
+
+    click_button 'Create Order'
+
+    new_order = Order.last
+
+    expect(current_path).to eq("/orders/#{new_order.id}")
+  end
+end
